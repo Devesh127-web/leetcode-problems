@@ -1,0 +1,25 @@
+#include<iostream>
+#include<algorithm>
+#include<climits>
+
+int main(){
+    int arr[]={3,1,2,5,3,6,8};
+    int n=sizeof(arr)/sizeof(arr[0]);//arr is a plain array, not a std::vector, so you cannot use arr.size() or
+    std::sort(arr,arr+n);
+    int count=0;
+    int missing=-1;
+    for(int i=0;i<n;i++){
+        
+        if(arr[i]==arr[1+i]){
+            std::cout<<arr[i]<<'\n';
+        }
+    }
+    for(int i=1;i<=n;i++){
+        if(!std::binary_search(arr,arr+n,i)){
+            missing=i;
+            std::cout<<missing<<'\n';
+        }
+    }
+
+    return 0;
+}
